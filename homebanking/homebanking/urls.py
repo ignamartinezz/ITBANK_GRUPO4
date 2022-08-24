@@ -20,4 +20,6 @@ from Base import views as baseView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/',   baseView.home, name="home"),
 ]
+
