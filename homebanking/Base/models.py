@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 
+
+
 class Empleado(models.Model):
     employee_id = models.IntegerField()
     employee_name = models.TextField()
