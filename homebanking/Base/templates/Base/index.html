@@ -1,22 +1,23 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="es">
     <head>
         <title>ITBANK</title>
-        <link rel="icon" href="./images/logos/ISOLOGO.png">
+        <link rel="icon" href="{% static 'Base/images/logos/ISOLOGO.png' %}">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         
-        <link href="./CSS/styles.css" rel="stylesheet"/>
+        <link href="{% static 'Base/CSS/styles.css' %}" rel="stylesheet"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-        <script src="./scripts/api/api.js"></script>
+        <script src="{% static 'Base/scripts/api.js' %}"></script>
     </head>
     <body id="homeBackground">
         <nav class="navbar bg-light border-bottom">
             <div class="container">
                 <a class="navbar-brand" href="">
-                    <img src="./images/logos/logomarginado-08.png" class="img-fluid float-start" alt="Logo ITBANK" width="336" height="115">
+                    <img src="{% static 'Base/images/logos/logomarginado-08.png' %}" class="img-fluid float-start" alt="Logo ITBANK" width="336" height="115">
                 </a>
                 <div class="d-block w-auto">
                     <ul class="nav nav-tabs nav-fill fs-5">
@@ -47,7 +48,7 @@
                             </a>
                         </li>
                         <li  class="nav-item d-inline">
-                            <a class="nav-link link-success fw-bolder" href="./signup.html">
+                            <a class="nav-link link-success fw-bolder" href="{% url 'login' %}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                 </svg>
@@ -79,12 +80,12 @@
                             <h1 class="pb-5">Bienvenido</h1>
                             <p>Si estás ingresando como empresa, <a href="">clickeá aquí</a></p>
                             <div class="d-grid pt-1 mb-4">
-                                <a href="./signup.html" class="btn btn-success btn-lg shadow-lg" type="button">Ingresá a tu Cuenta</a>
+                                <a href="{% url 'login' %}" class="btn btn-success btn-lg shadow-lg" type="button">Ingresá a tu Cuenta</a>
                             </div>
                         </form>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
-                    <img src="./images/bonaerense/Jardin-Botanico-Recorte.jpeg" alt="Login image"
+                    <img src="{% static 'Base/images/bonaerense/Jardin-Botanico-Recorte.jpeg' %}" alt="Login image"
                     class=" w-100 h-auto" id="baseImage">
                 </div>
             </div>
@@ -146,7 +147,7 @@
                 <section class="row row-cols-1 row-cols-sm-2 row-cols-md-3 gx-5 mt-5">
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img src="./images/corporativo/estados-financieros.jpg" class="img-fluid float-start" alt="Logo ITBANK" width="360" height="115">
+                            <img src="{% static 'Base/images/corporativo/estados-financieros.jpg' %}" class="img-fluid float-start" alt="Logo ITBANK" width="360" height="115">
                             <div class="card-body">
                                 <p class="card-text">El Directorio de la compañía presentó el Balance 2021, arrojando éste excelentes resultados, que fortalecen la confianza en nuestro banco y valorizan nuestros activos...</p>
                                 <div class="d-flex justify-content-between align-items-center">
@@ -157,7 +158,7 @@
                     </div>
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img src="./images/corporativo/Acciones.jpeg" class="img-fluid float-start" alt="Logo ITBANK" width="360" height="115">
+                            <img src="{% static 'Base/images/corporativo/Acciones.jpeg' %}" class="img-fluid float-start" alt="Logo ITBANK" width="360" height="115">
                             <div class="card-body">
                                 <p class="card-text">Nuestras acciones son referencia en el Panel Líder de BYMA, marcando los rendimientos de la plaza local. Los resultados del 2021 fortalecen esa tendencia...</p>
                                 <div class="d-flex justify-content-between align-items-center">
@@ -168,7 +169,7 @@
                     </div>
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img src="./images/corporativo/Inclusion.jpeg" class="img-fluid float-start" alt="Logo ITBANK" width="360" height="115">
+                            <img src="{% static 'Base/images/corporativo/Inclusion.jpeg' %}" class="img-fluid float-start" alt="Logo ITBANK" width="360" height="115">
                             <div class="card-body">
                                 <p class="card-text">Fuimos reconocidos por nuestro programa de asistencia social e inclusión financiera, en el marco del Departamento de RSE. El BCRA reconoció nuestra labor...</p>
                                 <div class="d-flex justify-content-between align-items-center">
