@@ -71,6 +71,7 @@ def homeBanking(request):
 
 
 class ListarSucursales(APIView):
+    
     def get(self,request):
         sucursales= Sucursal.objects.all()
         serializers=SucursalSerializer(sucursales, many=True)

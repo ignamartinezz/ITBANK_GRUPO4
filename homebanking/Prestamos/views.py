@@ -11,11 +11,13 @@ from Cuentas.models import Cuenta
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status,permissions
 
 # Create your views here.
 
 class ObtenerPrestamosCliente(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self,request,customer_id):
         cliente=Cliente.objects.filter(customer_dni=str(customer_id)).first()
         if cliente.exists():
@@ -26,6 +28,8 @@ class ObtenerPrestamosCliente(APIView):
             return Response(status=status.HTTP_204_NO_CONTENT)
         
 class ObtenerPrestamosSucursal(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self,request, sucursal_id):
         clientela= Cliente.objects.filter(branch_id=sucursal_id)
         listaprestamos=[]
@@ -38,6 +42,8 @@ class ObtenerPrestamosSucursal(APIView):
         return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
 
 class DeletePrestamo(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
     def delete(self,request,loan_id):
         prestamo=Prestamo.objects.filter(loan_id=loan_id).first()
         if prestamo:
@@ -50,6 +56,8 @@ class DeletePrestamo(APIView):
         return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
 
 class CrearPrestamo(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
     def post(self, request):
         data = request.data
         data['loan_date']= date.today().strftime('%Y-%m-%d')

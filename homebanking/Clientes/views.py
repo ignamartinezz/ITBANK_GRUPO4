@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status,permissions
 
 from Cuentas.serializers import CuentaSerializer
 from Cuentas.models import Cuenta
@@ -12,6 +12,8 @@ from .serializers import ClienteSerializer
 # Create your views here.
 
 class ObtenerDatosCliente(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self,request,customer_id):
         cliente=Cliente.objects.filter(customer_dni=str(customer_id)).first()
         if cliente.exists():
@@ -22,6 +24,8 @@ class ObtenerDatosCliente(APIView):
             return Response(status=status.HTTP_204_NO_CONTENT)
      
 class ObtenerSaldoCliente(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self,request,customer_id):
         cliente=Cliente.objects.filter(customer_dni=str(customer_id)).first()
         if cliente.exists():

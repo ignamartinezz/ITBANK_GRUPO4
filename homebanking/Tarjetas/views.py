@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status,permissions
 
 from Clientes.serializers import ClienteSerializer
 from Clientes.models import Cliente
@@ -14,7 +14,11 @@ from .serializers import TarjetaSerializer
 # Create your views here.
 
 class ObtenerTarjetasCliente(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self,request,customer_id):
+
+
         cliente=Cliente.objects.filter(customer_dni=str(customer_id)).first()
         if cliente.exists():
             tarjetas=Tarjeta.objects.filter(customer_id=cliente.customer_id)
