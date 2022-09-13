@@ -2,10 +2,8 @@ from django.db import models
 
 # Create your models here.
 
-
-
 class Empleado(models.Model):
-    employee_id = models.IntegerField()
+    employee_id = models.IntegerField(primary_key=True)
     employee_name = models.TextField()
     employee_surname = models.TextField()
     employee_hire_date = models.TextField()
@@ -17,7 +15,7 @@ class Empleado(models.Model):
         db_table = 'empleado'
 
 class Movimientos(models.Model):
-    movimiento_id = models.IntegerField()
+    movimiento_id = models.IntegerField(primary_key=True)
     customer_id = models.TextField()
 
     class Meta:

@@ -8,14 +8,17 @@ from .forms import  PrestamoForm
 
 @login_required(login_url='login')
 def prestamo(request):
-    # form=FormPrestamo(data=request.POST)
-
-    context={}
-    context['form']=PrestamoForm(data=request.POST)
+    form=PrestamoForm(data=request.POST)
     
-    if PrestamoForm.is_valid():
-        return redirect(reverse('base/homeBanking.html'))
+    
 
+
+    context={
+        'form':form
+    }
+#    context['form']=PrestamoForm(data=request.POST)
+    
+    
     return render(request, "Prestamos/prestamo.html", context)
 
 
