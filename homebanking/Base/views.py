@@ -60,3 +60,5 @@ def login(request):
 def homeBanking(request):
     print(request.user)
     return render(request, "base/homeBanking.html")
+
+
