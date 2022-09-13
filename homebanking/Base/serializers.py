@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Empleado
+from .models import Empleado, Sucursal
 from .models import Movimientos
 
 
@@ -11,6 +11,11 @@ class EmpleadoSerializer(serializers.ModelSerializer):
 class MovimientosSerializer(serializers.ModelSerializer):
     class Meta:
         model=Movimientos
+        fields='__all__'
+
+class SucursalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Sucursal
         fields='__all__'
 
 

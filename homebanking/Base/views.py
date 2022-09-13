@@ -1,9 +1,17 @@
-from cgi import print_form
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
+
 from .forms import RegistroForm
+from .models import Sucursal
 from django.urls import reverse
 from django.contrib.auth.models import User
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+from .serializers import SucursalSerializer
+
 
 # Create your views here.
 
@@ -60,5 +68,14 @@ def login(request):
 def homeBanking(request):
     print(request.user)
     return render(request, "base/homeBanking.html")
+
+
+class ListarSucursales(APIView):
+    def get(self,request):
+        sucursales= Sucursal.objects.all()
+        serializers=SucursalSerializer(sucursales, many=True)
+        if sucursales:
+            return Response(serializers.data, status=status.HTTP_200_OK)
+        return Response(serializers.errors, status=status.HTTP_404_NOT_FOUND)
 
 
