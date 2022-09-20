@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Tarjeta(models.Model):
-    card_id = models.IntegerField()
+    card_id = models.IntegerField(primary_key=True)
     card_numero = models.IntegerField() 
     card_expiracion_fecha = models.TextField()
     card_emision_fecha = models.TextField()

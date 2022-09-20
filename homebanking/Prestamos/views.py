@@ -1,13 +1,15 @@
 from datetime import date
-from multiprocessing import context
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 from .models import Prestamo
 from .forms import  PrestamoForm
 from .serializers import PrestamoSerializer
 from Clientes.models import Cliente
 from Base.models import Sucursal
 from Cuentas.models import Cuenta
+
+
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -70,19 +72,20 @@ class CrearPrestamo(APIView):
 
 @login_required(login_url='login')
 def prestamo(request):
-    form=PrestamoForm(data=request.POST)
-    
-    
-
-
+    form=PrestamoForm
     context={
         'form':form
     }
-#    context['form']=PrestamoForm(data=request.POST)
     
+    if request.method=="POST":
+        form=form(data=request.POST)
+        if form.is_valid():
+            loan_typeData=request.POST.get('loan_type','')
+            loan_dateData=request.POST.get('loan_date','')
+            loan_totalData=request.POST.get('loan_total','')
     
+            prestamo=Prestamo(loan_type=loan_typeData,loan_date=loan_dateData
+            ,loan_total=loan_totalData,customer_id=1)
+            prestamo.save()
+            return redirect(reverse('homeBanking'))
     return render(request, "Prestamos/prestamo.html", context)
-
-
-# def prestamo(request):
-#     return render(request, "Prestamos/prestamo.html")

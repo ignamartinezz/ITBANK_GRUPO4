@@ -144,17 +144,37 @@
                     <main>
                         <div class="container-fluid px-4">
                             <h1 class="mt-4">{{request.user.username}}, completa los siguientes campos:</h1>
-                            <form action="" method="POST">
-                                {% csrf_token %}
-                                <div class="form-group d-flex justify-content-center flex-column">
-                                    {{form.as_p}}
-                                    <input type="submit" value="Enviar" class="btn btn-primary m-lg-4" style="width: 50%" />
-                                </div>
-                            </form>            
-                        
-                        </div>
+                            <form action="" method="post">{% csrf_token %}
+                                {{form.as_p}}
+                                <input type="submit" value="Enviar" class="btn btn-primary m-lg-4" style="width: 50%" />
+                                <!--  Prestamo Personalizado
+                                <h3 class="mb-4">Formulario de petición de prestamo:</h3>
+                                <p>
+                                <input type="text" name="registerUsername" autofocus maxlength="254" required
+                                id="id_username" class="form-control" placeholder="Username"/>
+                                </p>
+                                <p>
+                                <input type="text" name="email" autofocus maxlength="254" required
+                                id="id_username" class="form-control" placeholder="Mail"/>
+                                </p>
+                                <p>
+                                <input type="text" name="registerFirstName" autofocus maxlength="254" required
+                                id="id_username" class="form-control" placeholder="Nombre"/>
+                                </p>
+                                <p>
+                                <input type="text" name="registerLastName" autofocus maxlength="254" required
+                                id="id_username" class="form-control" placeholder="Apellido"/>
+                                </p>        
+                                <p>
+                                <input type="password" name="password" required
+                                id="id_password" class="form-control" placeholder="Contraseña"/>
+                                </p>
+                                <p><input type="submit" name="submit" value="registro" class="btn btn-primary btn-block"
+                                value="Acceder"></p>-->
 
-                        </main>
+                            </form>            
+                        </div>
+                    </main>
                 </div>
             </div>
         </body>

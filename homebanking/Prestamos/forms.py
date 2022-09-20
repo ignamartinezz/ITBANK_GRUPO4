@@ -1,19 +1,13 @@
-from dataclasses import fields
 from django import forms
 from .models import Prestamo
 import datetime
 
-# class FormPrestamo(forms.Form):
-#     loan_total = forms.IntegerField(label="loan_total", required=True)
-#     loan_type = forms.CharField(label="loan_type", required=True)
+typelist=[('1', 'PERSONAL'),  ('2', 'PRENDARIO'),
+('3', 'HIPOTECARIO'), ('4', 'CONSUMO'), ('5', 'OTROS')]
 
-class PrestamoForm(forms.ModelForm):
-    class Meta:
-        model=Prestamo
-        fields="__all__"
+class PrestamoForm(forms.Form):
+    loan_type= forms.CharField(label="Tipo de prestamo", widget=forms.Select(choices=typelist))
+    loan_date= forms.DateField(label="Fecha del prestamo", initial=datetime.date.today)
+    loan_total = forms.IntegerField(label="Dinero del prestamo", required=True)
 
-   
-#    customer_id = forms.CharField(label="cliente_id", required=True)
-#    loan_date = forms.DateField(
- #       label='Fecha de prestamo', initial=datetime.date.today)
- #   loan_total = forms.IntegerField(label='Monto del prestamo', required=True)
+
